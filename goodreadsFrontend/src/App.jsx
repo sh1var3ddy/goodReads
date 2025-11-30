@@ -1,10 +1,11 @@
+import MainRoutes from 'Routes/MainRoutes';
 import './App.css';
-import Home from 'Pages/Home.jsx';
+import { Router } from 'react-router-dom';
 function App() {
 
   return (
     <>
-    <Home/>
+      <MainRoutes/>
     </>
   );
 }
