@@ -8,7 +8,7 @@ export default defineConfig({
       Components: '/src/Components',
       Pages: '/src/Pages',
       Configs: '/src/Configs',
-      Assests: '/src/Assets',
+      Assets: '/src/Assets',
       Layouts: '/src/Layouts',
       Redux: '/src/Redux',
       Helpers: '/src/Helpers',
