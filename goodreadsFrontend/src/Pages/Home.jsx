@@ -1,4 +1,5 @@
 import Logo from "Assets/Images/logo.png";
+import { Link } from "react-router-dom";
 
 function Home() {
     return (
@@ -23,8 +24,12 @@ function Home() {
                 </div>
 
                 <div >
-                    <button className="btn btn-primary rounded-md px-5 py-2 text-xl bg-primary">Register</button>
-                    <button className="btn btn-warning rounded-md mx-3 px-5 py-2 text-xl bg-warning text-black">Login</button>
+                    <button className="btn btn-primary rounded-md px-5 py-2 text-xl bg-primary">
+                        <Link to = "/signup">Register</Link>
+                    </button>
+                    <button className="btn btn-warning rounded-md mx-3 px-5 py-2 text-xl bg-warning text-black">
+                        <Link to = "/login">Login</Link>
+                    </button>
                 </div>
             </div>
         </div>
