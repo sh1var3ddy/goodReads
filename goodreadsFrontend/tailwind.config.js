@@ -10,5 +10,5 @@ extend: {},
 plugins: [
   require("daisyui")
 ],
-}
+};
 
