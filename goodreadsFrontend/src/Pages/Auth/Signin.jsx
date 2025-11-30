@@ -31,8 +31,8 @@ function Signin() {
         e.preventDefault();
 
         const result = await dispatch(signin(signInDetails));
-        if(result?.payload){
-            navigate("/")
+        if (signin.fulfilled.match(result)) {
+            navigate("/");
         }
 
         resetForm();

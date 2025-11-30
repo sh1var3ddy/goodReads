@@ -24,12 +24,16 @@ function Home() {
                 </div>
 
                 <div >
-                    <button className="btn btn-primary rounded-md px-5 py-2 text-xl bg-primary">
-                        <Link to = "/signup">Register</Link>
-                    </button>
-                    <button className="btn btn-warning rounded-md mx-3 px-5 py-2 text-xl bg-warning text-black">
-                        <Link to = "/login">Login</Link>
-                    </button>
+                    <Link to = "/signup">
+                        <button className="btn btn-primary rounded-md px-5 py-2 text-xl bg-primary">
+                            Register
+                        </button>
+                    </Link>
+                     <Link to = "/signin">
+                        <button className="btn btn-warning rounded-md mx-3 px-5 py-2 text-xl bg-warning text-black">
+                        Login
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -22,11 +22,9 @@ export const signup = createAsyncThunk(
 
       const response = await promise;
       return response.data;  
-    } catch (err) {
-      console.log("Error in signup thunk", err);
-      toast.error("Signup failed.", err.response?.data);
-
-      // Optional: send error payload in a controlled way
+    } catch (error) {
+    //   console.log("Error in signup thunk", error?.response?.data?.message);
+      toast.error(`Signup failed. ${error?.response?.data?.message}`);
       return rejectWithValue(err.response?.data || "Signup failed");
     }
   }
@@ -46,9 +44,9 @@ export const signin = createAsyncThunk(
 
       const response = await promise;
       return response.data;  
-    } catch (err) {
-      console.log("Error in signin thunk", err);
-      toast.error("Signin failed.", err.response?.data);
+    } catch (error) {
+    //   console.log("Error in signin thunk", error.response.data.err);
+      toast.error(`Signin failed. ${error?.response?.data?.err}`);
 
       // Optional: send error payload in a controlled way
       return rejectWithValue(err.response?.data || "Signin failed");
@@ -64,7 +62,7 @@ const authSlice = createSlice({
         builder.addCase(signin.fulfilled,(state,action)=>{
             if(action?.payload?.data){
                 const recievedData = action?.payload?.data;
-                console.log(recievedData);
+                // console.log(recievedData);
                 console.log(action?.payload?.data);
                 state.isLoggedin = (recievedData !== undefined);
                 state.token = recievedData?.token
