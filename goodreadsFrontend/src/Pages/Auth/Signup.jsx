@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 function Signup() {
 
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
 
     const [signUpDetails,setSignUpDetails] = useState({
         username:"",
@@ -22,10 +22,21 @@ function Signup() {
         })
     }
 
-function onFormSubmit(e){
+    function resetForm(){
+        setSignUpDetails({
+            username:'',
+            email:'',
+            password:'',
+        })
+    }
+
+    async function onFormSubmit(e){
         e.preventDefault();
-        const response = dispatch(signup(signUpDetails));
-        console.log("Form submitted",response);
+        const result = await dispatch(signup(signUpDetails));
+        if (signup.fulfilled.match(result)) {
+            navigate("/signin");
+        }
+        resetForm();
     }
 
     return (
