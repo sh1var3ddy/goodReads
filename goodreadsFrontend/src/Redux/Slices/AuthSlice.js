@@ -3,7 +3,7 @@ import axiosInstance from "Configs/axiosInstance";
 import toast from "react-hot-toast";
 
 const initialState = {
-    isLoggedin: localStorage.getItem('isLoggedIn') || false,
+    isLoggedIn: localStorage.getItem('isLoggedIn') || false,
     token: localStorage.getItem('token') ||'',
     username: localStorage.getItem('username') || ''
 }
@@ -57,22 +57,29 @@ export const signin = createAsyncThunk(
 const authSlice = createSlice({
     name:'auth',
     initialState:initialState,
-    reducers:{},
+    reducers:{
+      logout: (state)=>{
+        state.isLoggedIn= false;
+        state.token= '';
+        state.username=  '';
+        localStorage.clear();
+      }
+    },
     extraReducers: (builder)=>{
         builder.addCase(signin.fulfilled,(state,action)=>{
             if(action?.payload?.data){
                 const recievedData = action?.payload?.data;
-                // console.log(recievedData);
-                console.log(action?.payload?.data);
-                state.isLoggedin = (recievedData !== undefined);
+                state.isLoggedIn = (recievedData !== undefined);
                 state.token = recievedData?.token
                 state.username = recievedData?.username
-                localStorage.setItem("isLoggedin", state.isLoggedin);
+                localStorage.setItem("isLoggedIn", state.isLoggedIn);
                 localStorage.setItem("token",state.token);
                 localStorage.setItem("username",state.username);
             }
         })
     }
 })
+
+export const {logout} = authSlice.actions; 
 
 export default authSlice.reducer;
