@@ -5,6 +5,7 @@ import SignIn from "Pages/Auth/Signin.jsx";
 import NotFound from "Pages/NotFound.jsx";
 import Dashboard from "Pages/Dashboard";
 import BookDescription from "Pages/BookDescription";
+import Shelf from "Pages/Shelf";
 
 function MainRoutes() {
     return (
@@ -14,6 +15,7 @@ function MainRoutes() {
             <Route path = "/signin" element = {<SignIn/>}/>
             <Route path = "/dashboard" element = {<Dashboard/>}/>
             <Route path = "book/description" element = {<BookDescription/>}/>
+            <Route path = "/shelf" element = {<Shelf/>}/>
             <Route path="*" element={<NotFound/>}/>
         </Routes>
     );
