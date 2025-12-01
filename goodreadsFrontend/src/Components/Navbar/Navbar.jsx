@@ -24,8 +24,8 @@ export default function Navbar(){
                             <summary className="block list-none cursor-pointer">Options</summary>
                             <ul className="p-2 bg-base-100">
                                 {state.isLoggedIn && <li><Link to="/signin" onClick={onLogout}>Logout</Link></li>}
-                                {!state.isLoggedIn && <li><Link to="/signup" >Sign Up</Link></li>}
-                                {!state.isLoggedIn && <li><Link to="/signin" >Sign In</Link></li>}
+                                {!state.isLoggedIn && <li><Link to="/signup" >SignUp</Link></li>}
+                                {!state.isLoggedIn && <li><Link to="/signin" >SignIn</Link></li>}
                             </ul>
                         </details>
                     </li>
