@@ -1,13 +1,31 @@
 import BookCard from "Components/BookCard/BookCard";
 import Layout from "Layouts/Layout";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBooks } from "Redux/Slices/BookSlice";
 
 export default function Dashboard(){
+    const bookState = useSelector((state)=>state.book);
+    const dispatch = useDispatch();
+
+    async function loadBooks(){
+        if(bookState.bookList.length===0){
+            const response = await dispatch(getAllBooks());
+        }
+    }
+
+    useEffect(()=>{
+        loadBooks();
+    },[])
+
     return (
         <>
            <Layout>
-            {/* <div>
-                <BookCard title="Children of the Book" author="Narayana" description="Children of the Book is a memoir by Ilana Kurshan about her life as a ......"/>
-            </div> */}
+                {bookState.bookList.length>0 &&
+                    bookState.bookList.map(book=>{
+                        return <BookCard key={book._id} data={book}/>
+                    })
+                }
            </Layout>
         </>
     )
