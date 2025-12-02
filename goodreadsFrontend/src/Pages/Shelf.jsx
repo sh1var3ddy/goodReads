@@ -1,6 +1,6 @@
 import Layout from "Layouts/Layout";
 import BookImage from "Assets/Images/book.png"
-import { getAllBookShelves } from "Redux/Slices/ShelfSlice";
+import { createShelf, getAllBookShelves } from "Redux/Slices/ShelfSlice";
 import { useDispatch} from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -14,6 +14,7 @@ export default function Shelf(){
 
     const [activeShelf, setActiveShelf] = useState(null);
     const [books, setBooks] = useState([]);
+    const [shelfInput, setShelfInput] = useState("");
 
     async function loadShelfes(){
         if(shelfState.shelfList.length===0){
@@ -59,7 +60,7 @@ export default function Shelf(){
                                     <div onClick={()=>changeActiveShelf(shelf._id)} key={shelf._id} className="mt-3 mb-3">
                                         <button 
                                             className={`btn-${activeShelf===shelf._id?'primary':'warning'} 
-                                                bg-${activeShelf===shelf._id?'primary':'warning'} px-2 py-1 text-2xl`}
+                                                bg-${activeShelf===shelf._id?'primary':'warning'} px-2 py-1 text-2xl rounded-md w-full`}
                                         >
                                                 {shelf.name}
                                         </button>
@@ -67,6 +68,18 @@ export default function Shelf(){
                                 )
                             })
                         }
+                    </div>
+                    <div>
+                        <input className="p-3 bg-white rounded-sm mb-4 text-black"  value={shelfInput} onChange={(e)=>{setShelfInput(e.target.value)}}/>
+                        <button className="block btn-accent bg-accent px-4 py-2 rounded-md"
+                            onClick={async ()=>{
+                                await dispatch(createShelf({shelfName:shelfInput}));
+                                await dispatch(getAllBookShelves());
+                                setShelfInput('');
+                            }}
+                        >
+                            Create New Shelf
+                        </button>
                     </div>
                 </div>
 

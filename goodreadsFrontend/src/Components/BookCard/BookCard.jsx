@@ -11,35 +11,37 @@ export default function BookCard({data}){
                     className='md:h-full h-1/5'
                     src={BookImage}
                     alt="Movie" 
+                    loading='lazy'
                 />
             </figure>
-            <div className="card-body">
-                <h2 className="card-title text-2xl font-semibold">{data?.title}</h2>
-                <div className='mt-24 flex justify-between items-center mb-8 gap-4'>
-                    <div className="flex flex-col gap-3 text-white text-xl">
-                        <div className=" flex justify-start gap-12 md:gap-5 items-center">
-                            <div>
-                                <BiUser/>
-                            </div>
-                            <div>
-                                {data?.author?.name}
-                            </div>
+            <div className="card-body flex flex-col justify-between">
+                <h2 className="card-title text-2xl font-semibold text-white">{data?.title}</h2>
+
+                {/* Author & Description */}
+                <div className="flex flex-col md:flex-row justify-between items-start gap-4 mt-4 md:mt-0">
+                    {/* Author + Description */}
+                    <div className="flex flex-col gap-3 text-white text-base max-w-full">
+                        <div className="flex items-center gap-3">
+                            <BiUser className="text-xl" />
+                            <span className="font-medium">{data?.author?.name}</span>
                         </div>
-                        <div>
+
+                        {/* Description with line clamp */}
+                        <div className="text-sm line-clamp-3 break-words">
                             {data?.description}
                         </div>
                     </div>
-                    
-                     <div className="card-actions justify-end">
-                        <button 
+
+                    {/* Action Button */}
+                    <div className="card-actions mt-2 md:mt-0">
+                        <button
                             className="btn btn-primary bg-primary"
-                            onClick={()=>navigate("/book/description", {state:{...data}})}
+                            onClick={() => navigate("/book/description", { state: { ...data } })}
                         >
-                                More Details
+                            More Details
                         </button>
                     </div>
                 </div>
-               
             </div>
         </div>
     )
