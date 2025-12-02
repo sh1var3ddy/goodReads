@@ -10,7 +10,7 @@ import { lazy } from "react";
 
 const Home = lazy(()=>import("Pages/Home.jsx"));
 const SignIn = lazy(()=>import("Pages/Auth/Signin.jsx"));
-const Signup = lazy(()=>import("Pages/Auth/Signin.jsx"));
+const Signup = lazy(()=>import("Pages/Auth/Signup.jsx"));
 const Dashboard = lazy(()=>import("Pages/Dashboard"));
 const Shelf = lazy(()=>import("Pages/Shelf"));
 const BookDescription = lazy(()=>import("Pages/BookDescription"));
